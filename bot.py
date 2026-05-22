@@ -14,8 +14,6 @@ with open("packs.json", "r", encoding="utf-8") as archivo:
 # TOKEN DEL BOT
 # ==========================================
 
-import os
-
 TOKEN = os.getenv("TOKEN")
 
 # ==========================================
