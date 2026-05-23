@@ -362,18 +362,18 @@ async def ayuda(ctx):
         "!contenido       — Muestra solo los Packs de Contenido\n"
         "!kits            — Muestra solo los Kits y Accesorios\n"
         "!gratuitos       — Muestra solo los Kits Gratuitos\n"
-        "!info <código>   — Muestra el detalle de un pack específico\n"
+        "!infor <código>  — Muestra el detalle de un pack específico\n"
         "!ayuda           — Muestra esta lista de comandos\n"
     )
 
     await ctx.send(f"```{mensaje}```")
 
 # ==========================================
-# COMANDO: !info
+# COMANDO: !infor
 # ==========================================
 
 @bot.command()
-async def info(ctx, codigo: str):
+async def infor(ctx, codigo: str):
 
     if not tiene_rol_permitido(ctx):
         return
