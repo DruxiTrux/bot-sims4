@@ -7,8 +7,10 @@ import json
 # ==========================================
 
 with open("packs.json", "r", encoding="utf-8") as archivo:
-
     packs = json.load(archivo)
+
+with open("fechas.json", "r", encoding="utf-8") as archivo:
+    fechas = json.load(archivo)
 
 # ==========================================
 # TOKEN DEL BOT
@@ -381,7 +383,9 @@ async def info(ctx, codigo: str):
     else:
         tipo = "Desconocido"
 
-    await ctx.send(f"```Código : {codigo}\nNombre  : {nombre}\nTipo    : {tipo}```")
+    fecha = fechas.get(codigo, "No disponible")
+
+    await ctx.send(f"```Código  : {codigo}\nNombre  : {nombre}\nTipo    : {tipo}\nLanzado : {fecha}```")
 
 # ==========================================
 # INICIAR BOT
