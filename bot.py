@@ -221,6 +221,114 @@ async def list(ctx):
         )
 
 # ==========================================
+# COMANDO: !expansiones
+# ==========================================
+
+@bot.command()
+async def expansiones(ctx):
+
+    if not tiene_rol_permitido(ctx):
+        return
+
+    partes = []
+    mensaje = "========== PACKS DE EXPANSIÓN ==========\n"
+
+    for codigo, nombre in packs.items():
+        if codigo.startswith("EP"):
+            linea = f"{codigo} - {nombre}\n"
+            if len(mensaje) + len(linea) > 1900:
+                partes.append(mensaje)
+                mensaje = ""
+            mensaje += linea
+
+    if mensaje:
+        partes.append(mensaje)
+
+    for parte in partes:
+        await ctx.send(f"```{parte}```")
+
+# ==========================================
+# COMANDO: !contenido
+# ==========================================
+
+@bot.command()
+async def contenido(ctx):
+
+    if not tiene_rol_permitido(ctx):
+        return
+
+    partes = []
+    mensaje = "========== PACKS DE CONTENIDO ==========\n"
+
+    for codigo, nombre in packs.items():
+        if codigo.startswith("GP"):
+            linea = f"{codigo} - {nombre}\n"
+            if len(mensaje) + len(linea) > 1900:
+                partes.append(mensaje)
+                mensaje = ""
+            mensaje += linea
+
+    if mensaje:
+        partes.append(mensaje)
+
+    for parte in partes:
+        await ctx.send(f"```{parte}```")
+
+# ==========================================
+# COMANDO: !kits
+# ==========================================
+
+@bot.command()
+async def kits(ctx):
+
+    if not tiene_rol_permitido(ctx):
+        return
+
+    partes = []
+    mensaje = "====== PACKS DE ACCESORIOS Y KITS ======\n"
+
+    for codigo, nombre in packs.items():
+        if codigo.startswith("SP"):
+            linea = f"{codigo} - {nombre}\n"
+            if len(mensaje) + len(linea) > 1900:
+                partes.append(mensaje)
+                mensaje = ""
+            mensaje += linea
+
+    if mensaje:
+        partes.append(mensaje)
+
+    for parte in partes:
+        await ctx.send(f"```{parte}```")
+
+# ==========================================
+# COMANDO: !gratuitos
+# ==========================================
+
+@bot.command()
+async def gratuitos(ctx):
+
+    if not tiene_rol_permitido(ctx):
+        return
+
+    partes = []
+    mensaje = "========== KIT GRATUITO ==========\n"
+
+    for codigo, nombre in packs.items():
+        if codigo.startswith("FP"):
+            linea = f"{codigo} - {nombre}\n"
+            if len(mensaje) + len(linea) > 1900:
+                partes.append(mensaje)
+                mensaje = ""
+            mensaje += linea
+
+    if mensaje:
+        partes.append(mensaje)
+
+    for parte in partes:
+        await ctx.send(f"```{parte}```")
+
+# ==========================================
 # COMANDO: !ayuda
 # ==========================================
 
@@ -234,6 +342,10 @@ async def ayuda(ctx):
         "========== COMANDOS DISPONIBLES ==========\n"
         "!dlc <búsqueda>  — Busca packs por nombre o código\n"
         "!list            — Muestra todos los packs por categoría\n"
+        "!expansiones     — Muestra solo los Packs de Expansión\n"
+        "!contenido       — Muestra solo los Packs de Contenido\n"
+        "!kits            — Muestra solo los Kits y Accesorios\n"
+        "!gratuitos       — Muestra solo los Kits Gratuitos\n"
         "!info <código>   — Muestra el detalle de un pack específico\n"
         "!ayuda           — Muestra esta lista de comandos\n"
     )
