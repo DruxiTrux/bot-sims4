@@ -199,6 +199,23 @@ async def list(ctx):
         )
 
 # ==========================================
+# COMANDO: !ayuda
+# ==========================================
+
+@bot.command()
+async def ayuda(ctx):
+
+    mensaje = (
+        "========== COMANDOS DISPONIBLES ==========\n"
+        "!dlc <búsqueda>  — Busca packs por nombre o código\n"
+        "!list            — Muestra todos los packs por categoría\n"
+        "!info <código>   — Muestra el detalle de un pack específico\n"
+        "!ayuda           — Muestra esta lista de comandos\n"
+    )
+
+    await ctx.send(f"```{mensaje}```")
+
+# ==========================================
 # COMANDO: !info
 # ==========================================
 
