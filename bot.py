@@ -18,6 +18,22 @@ import os
 TOKEN = os.getenv("TOKEN")
 
 # ==========================================
+# ROLES PERMITIDOS
+# ==========================================
+
+ROLES_PERMITIDOS = {
+    1458283509499170878,
+    1457897762250166425,
+    1465447064107221003,
+    1448750130567057508,
+    1463996153174691910,
+}
+
+def tiene_rol_permitido(ctx):
+    roles_usuario = {role.id for role in ctx.author.roles}
+    return bool(roles_usuario & ROLES_PERMITIDOS)
+
+# ==========================================
 # INTENTS
 # ==========================================
 
@@ -48,6 +64,9 @@ async def on_ready():
 
 @bot.command()
 async def dlc(ctx, *, busqueda):
+
+    if not tiene_rol_permitido(ctx):
+        return
 
     busqueda = busqueda.lower()
 
@@ -93,6 +112,9 @@ async def dlc(ctx, *, busqueda):
 
 @bot.command()
 async def list(ctx):
+
+    if not tiene_rol_permitido(ctx):
+        return
 
     partes = []
 
@@ -205,6 +227,9 @@ async def list(ctx):
 @bot.command()
 async def ayuda(ctx):
 
+    if not tiene_rol_permitido(ctx):
+        return
+
     mensaje = (
         "========== COMANDOS DISPONIBLES ==========\n"
         "!dlc <búsqueda>  — Busca packs por nombre o código\n"
@@ -221,6 +246,9 @@ async def ayuda(ctx):
 
 @bot.command()
 async def info(ctx, codigo: str):
+
+    if not tiene_rol_permitido(ctx):
+        return
 
     codigo = codigo.upper()
 
