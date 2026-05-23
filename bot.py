@@ -102,7 +102,7 @@ async def list(ctx):
     # FREE PACKS
     # ======================================
 
-    mensaje += "========== FREE PACKS ==========\n"
+    mensaje += "========== KIT GRATUITO ==========\n"
 
     for codigo, nombre in packs.items():
 
