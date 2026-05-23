@@ -20,6 +20,12 @@ import os
 TOKEN = os.getenv("TOKEN")
 
 # ==========================================
+# SERVIDOR PERMITIDO
+# ==========================================
+
+SERVIDOR_ID = 1448484344174743595
+
+# ==========================================
 # ROLES PERMITIDOS
 # ==========================================
 
@@ -50,6 +56,14 @@ bot = commands.Bot(
     command_prefix="!",
     intents=intents
 )
+
+# ==========================================
+# FILTRO GLOBAL: SOLO SERVIDOR PERMITIDO
+# ==========================================
+
+@bot.check
+async def solo_servidor_permitido(ctx):
+    return ctx.guild is not None and ctx.guild.id == SERVIDOR_ID
 
 # ==========================================
 # BOT LISTO
