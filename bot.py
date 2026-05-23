@@ -199,6 +199,34 @@ async def list(ctx):
         )
 
 # ==========================================
+# COMANDO: !info
+# ==========================================
+
+@bot.command()
+async def info(ctx, codigo: str):
+
+    codigo = codigo.upper()
+
+    if codigo not in packs:
+        await ctx.send(f"No se encontró ningún pack con el código `{codigo}`.")
+        return
+
+    nombre = packs[codigo]
+
+    if codigo.startswith("EP"):
+        tipo = "Pack de Expansión"
+    elif codigo.startswith("GP"):
+        tipo = "Pack de Contenido"
+    elif codigo.startswith("SP"):
+        tipo = "Pack de Accesorios / Kit"
+    elif codigo.startswith("FP"):
+        tipo = "Free Pack"
+    else:
+        tipo = "Desconocido"
+
+    await ctx.send(f"```Código : {codigo}\nNombre  : {nombre}\nTipo    : {tipo}```")
+
+# ==========================================
 # INICIAR BOT
 # ==========================================
 
