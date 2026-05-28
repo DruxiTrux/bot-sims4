@@ -345,6 +345,45 @@ async def gratuitos(ctx):
         await ctx.send(f"```{parte}```")
 
 # ==========================================
+# COMANDO: !cronologia
+# ==========================================
+
+@bot.command()
+async def cronologia(ctx):
+
+    if not tiene_rol_permitido(ctx):
+        return
+
+    def parse_fecha(codigo):
+        fecha = fechas.get(codigo, "")
+        if not fecha or fecha == "No disponible":
+            return (9999, 99, 99)
+        try:
+            d, m, a = fecha.split("/")
+            return (int(a), int(m), int(d))
+        except:
+            return (9999, 99, 99)
+
+    packs_ordenados = sorted(packs.items(), key=lambda x: parse_fecha(x[0]))
+
+    partes = []
+    mensaje = "====== PACKS POR FECHA DE LANZAMIENTO ======\n"
+
+    for codigo, nombre in packs_ordenados:
+        fecha = fechas.get(codigo, "No disponible")
+        linea = f"{fecha}  {codigo} - {nombre}\n"
+        if len(mensaje) + len(linea) > 1900:
+            partes.append(mensaje)
+            mensaje = ""
+        mensaje += linea
+
+    if mensaje:
+        partes.append(mensaje)
+
+    for parte in partes:
+        await ctx.send(f"```{parte}```")
+
+# ==========================================
 # COMANDO: !ayuda
 # ==========================================
 
@@ -363,6 +402,7 @@ async def ayuda(ctx):
         "!kits            — Muestra solo los Kits y Accesorios\n"
         "!gratuitos       — Muestra solo los Kits Gratuitos\n"
         "!infor <código>  — Muestra el detalle de un pack específico\n"
+        "!cronologia      — Lista todos los packs por fecha de lanzamiento\n"
         "!ayuda           — Muestra esta lista de comandos\n"
     )
 
