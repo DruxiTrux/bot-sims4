@@ -1,0 +1,101 @@
+ ["SP01", "Fiesta Glamurosa", "19/05/2015"],
+    ["SP02", "Patio de Ensueño", "16/06/2015"],
+    ["SP03", "Cocina Divina", "11/08/2015"],
+    ["SP04", "Escalofriante", "29/09/2015"],
+    ["SP05", "Noche de Cine", "12/01/2016"],
+    ["SP06", "Jardín Romántico", "09/02/2016"],
+    ["SP07", "Cuarto de Niños", "28/06/2016"],
+    ["SP08", "Diversión en el Patio", "19/07/2016"],
+    ["SP09", "Glamour Vintage", "06/12/2016"],
+    ["SP10", "Noche de Bolos", "29/03/2017"],
+    ["SP11", "Fitness", "20/06/2017"],
+    ["SP12", "Infantes", "24/08/2017"],
+    ["SP13", "Día de Colada", "16/01/2018"],
+    ["SP14", "Mi Primera Mascota", "13/03/2018"],
+    ["SP15", "Moschino", "13/08/2019"],
+    ["SP16", "Minicasas", "21/01/2020"],
+    ["SP17", "Portentos del Punto", "28/07/2020"],
+    ["SP18", "Fenómenos Paranormales", "26/01/2021"],
+
+    ["SP20", "Moda Retro", "02/03/2021"],
+    ["SP21", "Cocina Campestre", "02/03/2021"],
+    ["SP22", "Zafarrancho de Limpieza", "02/03/2021"],
+    ["SP23", "Oasis en el Patio", "18/05/2021"],
+    ["SP24", "Fashion Street", "05/10/2021"],
+    ["SP25", "Loft Industrial", "26/08/2021"],
+    ["SP26", "Moda de Aeropuerto", "05/10/2021"],
+
+    ["SP28", "Moda Masculina Moderna", "02/12/2021"],
+    ["SP29", "Decoración Vegetal", "09/11/2021"],
+
+    ["SP30", "Colores de Carnaval", "03/02/2022"],
+    ["SP31", "Decoración Maximalista", "21/03/2022"],
+    ["SP32", "Noches Chic", "26/05/2022"],
+    ["SP33", "Minicampistas", "26/05/2022"],
+    ["SP34", "Moda Mini", "01/09/2022"],
+    ["SP35", "Oasis de Lujo", "14/09/2022"],
+    ["SP36", "Pastel Pop", "10/11/2022"],
+    ["SP37", "Desorden Decorativo", "10/11/2022"],
+
+    ["SP38", "Moda Íntima", "19/01/2023"],
+    ["SP39", "Objetos para el Baño", "19/01/2023"],
+    ["SP40", "Invernadero Idílico", "20/04/2023"],
+    ["SP41", "Tesoros del Sótano", "20/04/2023"],
+    ["SP42", "Vuelta al Grunge", "01/06/2023"],
+    ["SP43", "Rincón de Lectura", "01/06/2023"],
+
+    ["SP44", "¡Al Agua, Patos!", "07/09/2023"],
+    ["SP45", "Lujo Moderno", "07/09/2023"],
+    ["SP46", "Chef de Casa", "28/09/2023"],
+
+    ["SP47", "Castillo con Clase", "18/01/2024"],
+    ["SP48", "Gusto Gótico", "18/01/2024"],
+    ["SP49", "Creaciones Cristalinas", "29/02/2024"],
+
+    ["SP50", "Homenaje Urbano", "18/04/2024"],
+    ["SP51", "Decoración Festiva", "18/04/2024"],
+
+    ["SP52", "Retiro en la Riviera", "30/05/2024"],
+    ["SP53", "Bistró Acogedor", "30/05/2024"],
+
+    ["SP54", "Estudio de Arte", "19/09/2024"],
+    ["SP55", "Cuarto de Cuentos", "19/09/2024"],
+
+    ["SP56", "Fiesta de Pijamas", "14/11/2024"],
+    ["SP57", "Caprichos Kitsch", "14/11/2024"],
+
+    ["SP58", "Rincón Gamer", "16/01/2025"],
+    ["SP59", "Santuario Secreto", "16/01/2025"],
+
+    ["SP60", "Cuarto de Casanova", "10/04/2025"],
+    ["SP61", "Salón Sofisticado", "10/04/2025"],
+
+    ["SP62", "Elegancia Ejecutiva", "01/05/2025"],
+    ["SP63", "Baño Elegante", "11/04/2025"],
+
+    ["SP64", "Estilo Encantador", "11/04/2025"],
+    ["SP65", "Taller de Restauración", "01/05/2025"],
+
+    ["SP66", "Años Dorados", "01/05/2025"],
+    ["SP67", "Menaje de Cocina", "01/05/2025"],
+
+    ["SP68", "Casa de Bob Esponja", "04/12/2025"],
+    ["SP69", "Moda de Otoño", "02/10/2025"],
+
+    ["SP70", "Cuarto Infantil de Bob Esponja", "04/12/2025"],
+    ["SP71", "Recibidor Rural", "22/08/2025"],
+
+    ["SP72", "Maquillaje con Glamour", "22/08/2025"],
+    ["SP73", "Retiro Moderno", "14/11/2025"],
+
+    ["SP74", "De la Huerta a la Mesa", "14/11/2025"],
+    ["SP75", "Cuarto de las Maravillas", "26/02/2026"],
+
+    ["SP76", "Estilo de Cine Clásico", "12/02/2026"],
+    ["SP77", "Hora del Té", "12/02/2026"],
+
+    ["SP78", "Salón de Baile de Máscaras de LB", "14/05/2026"],
+    ["SP79", "Galas de Baile de Máscaras de LB", "14/05/2026"],
+
+    ["SP81", "Sueños Silvestres", "11/12/2025"],
+    ["SP82", "El Patio de mi Casa", "26/02/2026"]
