@@ -442,7 +442,18 @@ async def infor(ctx, codigo: str):
 
     fecha = fechas.get(codigo, "No disponible")
 
-    await ctx.send(f"```Código  : {codigo}\nNombre  : {nombre}\nTipo    : {tipo}\nLanzado : {fecha}```")
+    if codigo.startswith("EP"):
+        precio = "~$39.99 USD"
+    elif codigo.startswith("GP"):
+        precio = "~$19.99 USD"
+    elif codigo.startswith("FP"):
+        precio = "Gratis"
+    elif codigo.startswith("SP") and int(codigo[2:]) <= 18:
+        precio = "~$9.99 USD"
+    else:
+        precio = "~$4.99 USD"
+
+    await ctx.send(f"```Código  : {codigo}\nNombre  : {nombre}\nTipo    : {tipo}\nLanzado : {fecha}\nPrecio  : {precio} (precio aproximado)```")
 
 # ==========================================
 # INICIAR BOT
