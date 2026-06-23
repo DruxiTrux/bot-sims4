@@ -29,22 +29,6 @@ SERVIDORES_PERMITIDOS = {
 }
 
 # ==========================================
-# ROLES PERMITIDOS
-# ==========================================
-
-ROLES_PERMITIDOS = {
-    1458283509499170878,
-    1457897762250166425,
-    1465447064107221003,
-    1448750130567057508,
-    1463996153174691910,
-}
-
-def tiene_rol_permitido(ctx):
-    roles_usuario = {role.id for role in ctx.author.roles}
-    return bool(roles_usuario & ROLES_PERMITIDOS)
-
-# ==========================================
 # INTENTS
 # ==========================================
 
@@ -83,9 +67,6 @@ async def on_ready():
 
 @bot.command()
 async def dlc(ctx, *, busqueda):
-
-    if not tiene_rol_permitido(ctx):
-        return
 
     busqueda = busqueda.lower()
 
@@ -132,8 +113,6 @@ async def dlc(ctx, *, busqueda):
 @bot.command()
 async def list(ctx):
 
-    if not tiene_rol_permitido(ctx):
-        return
 
     partes = []
 
@@ -246,8 +225,6 @@ async def list(ctx):
 @bot.command()
 async def expansiones(ctx):
 
-    if not tiene_rol_permitido(ctx):
-        return
 
     partes = []
     mensaje = "========== PACKS DE EXPANSIÓN ==========\n"
@@ -273,8 +250,6 @@ async def expansiones(ctx):
 @bot.command()
 async def contenido(ctx):
 
-    if not tiene_rol_permitido(ctx):
-        return
 
     partes = []
     mensaje = "========== PACKS DE CONTENIDO ==========\n"
@@ -300,8 +275,6 @@ async def contenido(ctx):
 @bot.command()
 async def kits(ctx):
 
-    if not tiene_rol_permitido(ctx):
-        return
 
     partes = []
     mensaje = "====== PACKS DE ACCESORIOS Y KITS ======\n"
@@ -327,8 +300,6 @@ async def kits(ctx):
 @bot.command()
 async def gratuitos(ctx):
 
-    if not tiene_rol_permitido(ctx):
-        return
 
     partes = []
     mensaje = "========== KIT GRATUITO ==========\n"
@@ -354,8 +325,6 @@ async def gratuitos(ctx):
 @bot.command()
 async def cronologia(ctx):
 
-    if not tiene_rol_permitido(ctx):
-        return
 
     def parse_fecha(codigo):
         fecha = fechas.get(codigo, "")
@@ -393,8 +362,6 @@ async def cronologia(ctx):
 @bot.command()
 async def ayuda(ctx):
 
-    if not tiene_rol_permitido(ctx):
-        return
 
     mensaje = (
         "========== COMANDOS DISPONIBLES ==========\n"
@@ -418,14 +385,11 @@ async def ayuda(ctx):
 @bot.command()
 async def infor(ctx, codigo: str):
 
-    if not tiene_rol_permitido(ctx):
-        return
 
     codigo = codigo.upper()
 
     if codigo not in packs:
         await ctx.send(f"No se encontró ningún pack con el código `{codigo}`.")
-        return
 
     nombre = packs[codigo]
 
