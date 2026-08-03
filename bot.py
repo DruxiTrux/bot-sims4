@@ -41,6 +41,7 @@ intents.message_content = True
 
 bot = commands.Bot(
     command_prefix="!",
+    case_insensitive=True,
     intents=intents
 )
 
