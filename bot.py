@@ -421,6 +421,23 @@ async def infor(ctx, codigo: str):
     await ctx.send(f"```Código  : {codigo}\nNombre  : {nombre}\nTipo    : {tipo}\nLanzado : {fecha}\nPrecio  : {precio} (precio aproximado)```")
 
 # ==========================================
+# COMANDO: !servidores
+# ==========================================
+
+@bot.command()
+@commands.is_owner()
+async def servidores(ctx):
+
+    mensaje = "========== SERVIDORES ==========\n\n"
+
+    for servidor in bot.guilds:
+        mensaje += f"{servidor.name}\n"
+        mensaje += f"ID: {servidor.id}\n"
+        mensaje += f"Miembros: {servidor.member_count}\n\n"
+
+    await ctx.send(f"```{mensaje}```")
+
+# ==========================================
 # INICIAR BOT
 # ==========================================
 
