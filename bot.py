@@ -16,14 +16,16 @@ def home():
     return "¡Bot activo y funcionando 24/7!"
 
 def run_flask():
-    # Render asigna automáticamente un puerto mediante la variable de entorno PORT
-    port = int(os.environ.get("PORT", 8080))
+    port = int(os.environ.get("PORT", 10000))
     app.run(host='0.0.0.0', port=port)
 
 def keep_alive():
     t = Thread(target=run_flask)
     t.daemon = True
     t.start()
+
+# Iniciar Flask inmediatamente antes de que cargue el bot
+keep_alive()
 
 # ==========================================
 # CARGAR BASE DE DATOS
