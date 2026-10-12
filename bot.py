@@ -54,6 +54,7 @@ SERVIDORES_PERMITIDOS = {
 # ==========================================
 
 intents = discord.Intents.default()
+intents.message_content = True  # <--- ESTA LÍNEA ES CLAVE
 
 bot = commands.Bot(
     command_prefix="!",
