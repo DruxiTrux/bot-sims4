@@ -49,6 +49,10 @@ SERVIDORES_PERMITIDOS = {
     1512417855554195516,
 }
 
+@bot.check
+async def solo_servidor_permitido(ctx):
+    return ctx.guild is not None and ctx.guild.id in SERVIDORES_PERMITIDOS
+
 # ==========================================
 # INTENTS Y CREACIÓN DEL BOT
 # ==========================================
