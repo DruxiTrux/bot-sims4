@@ -1,9 +1,6 @@
 import os
 import json
 from threading import Thread
-from flask import Flaskimport os
-import json
-from threading import Thread
 from flask import Flask
 import discord
 from discord.ext import commands
