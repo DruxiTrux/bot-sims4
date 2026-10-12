@@ -1,6 +1,29 @@
+import os
+import json
+from threading import Thread
+from flask import Flask
 import discord
 from discord.ext import commands
-import json
+
+# ==========================================
+# SERVIDOR FLASK (KEEP ALIVE PARA RENDER)
+# ==========================================
+
+app = Flask('')
+
+@app.route('/')
+def home():
+    return "¡Bot activo y funcionando 24/7!"
+
+def run_flask():
+    # Render asigna automáticamente un puerto mediante la variable de entorno PORT
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host='0.0.0.0', port=port)
+
+def keep_alive():
+    t = Thread(target=run_flask)
+    t.daemon = True
+    t.start()
 
 # ==========================================
 # CARGAR BASE DE DATOS
@@ -15,12 +38,11 @@ with open("fechas.json", "r", encoding="utf-8") as archivo:
 # ==========================================
 # TOKEN DEL BOT
 # ==========================================
-import os
 
 TOKEN = os.getenv("TOKEN")
 
 # ==========================================
-# SERVIDOR PERMITIDO
+# SERVIDORES PERMITIDOS
 # ==========================================
 
 SERVIDORES_PERMITIDOS = {
@@ -59,7 +81,6 @@ async def solo_servidor_permitido(ctx):
 
 @bot.event
 async def on_ready():
-
     print(f"Conectado como {bot.user}")
 
 # ==========================================
@@ -68,44 +89,21 @@ async def on_ready():
 
 @bot.command()
 async def dlc(ctx, *, busqueda):
-
     busqueda = busqueda.lower()
-
     resultados = []
 
     for codigo, nombre in packs.items():
-
         if (
             busqueda in codigo.lower()
-            or
-            busqueda in nombre.lower()
+            or busqueda in nombre.lower()
         ):
-
-            resultados.append(
-                f"{codigo} - {nombre}"
-            )
-
-    # ======================================
-    # SI HAY RESULTADOS
-    # ======================================
+            resultados.append(f"{codigo} - {nombre}")
 
     if resultados:
-
         mensaje = "\n".join(resultados)
-
-        await ctx.send(
-            f"```{mensaje}```"
-        )
-
-    # ======================================
-    # SI NO HAY RESULTADOS
-    # ======================================
-
+        await ctx.send(f"```{mensaje}```")
     else:
-
-        await ctx.send(
-            "No se encontraron resultados."
-        )
+        await ctx.send("No se encontraron resultados.")
 
 # ==========================================
 # COMANDO: !list
@@ -113,111 +111,57 @@ async def dlc(ctx, *, busqueda):
 
 @bot.command()
 async def list(ctx):
-
-
     partes = []
-
     mensaje = ""
 
-    # ======================================
     # FREE PACKS
-    # ======================================
-
     mensaje += "========== KIT GRATUITO ==========\n"
-
     for codigo, nombre in packs.items():
-
         if codigo.startswith("FP"):
-
             linea = f"{codigo} - {nombre}\n"
-
             if len(mensaje) + len(linea) > 1900:
-
                 partes.append(mensaje)
                 mensaje = ""
-
             mensaje += linea
-
     mensaje += "\n"
 
-    # ======================================
     # EXPANSIONES
-    # ======================================
-
     mensaje += "========== PACKS DE EXPANSIÓN ==========\n"
-
     for codigo, nombre in packs.items():
-
         if codigo.startswith("EP"):
-
             linea = f"{codigo} - {nombre}\n"
-
             if len(mensaje) + len(linea) > 1900:
-
                 partes.append(mensaje)
                 mensaje = ""
-
             mensaje += linea
-
     mensaje += "\n"
 
-    # ======================================
     # CONTENIDO
-    # ======================================
-
     mensaje += "========== PACKS DE CONTENIDO ==========\n"
-
     for codigo, nombre in packs.items():
-
         if codigo.startswith("GP"):
-
             linea = f"{codigo} - {nombre}\n"
-
             if len(mensaje) + len(linea) > 1900:
-
                 partes.append(mensaje)
                 mensaje = ""
-
             mensaje += linea
-
     mensaje += "\n"
 
-    # ======================================
     # KITS Y ACCESORIOS
-    # ======================================
-
     mensaje += "====== PACKS DE ACCESORIOS Y KITS ======\n"
-
     for codigo, nombre in packs.items():
-
         if codigo.startswith("SP"):
-
             linea = f"{codigo} - {nombre}\n"
-
             if len(mensaje) + len(linea) > 1900:
-
                 partes.append(mensaje)
                 mensaje = ""
-
             mensaje += linea
-
-    # ======================================
-    # GUARDAR ÚLTIMA PARTE
-    # ======================================
 
     if mensaje:
-
         partes.append(mensaje)
 
-    # ======================================
-    # ENVIAR TODAS LAS PARTES
-    # ======================================
-
     for parte in partes:
-
-        await ctx.send(
-            f"```{parte}```"
-        )
+        await ctx.send(f"```{parte}```")
 
 # ==========================================
 # COMANDO: !expansiones
@@ -225,8 +169,6 @@ async def list(ctx):
 
 @bot.command()
 async def expansiones(ctx):
-
-
     partes = []
     mensaje = "========== PACKS DE EXPANSIÓN ==========\n"
 
@@ -250,8 +192,6 @@ async def expansiones(ctx):
 
 @bot.command()
 async def contenido(ctx):
-
-
     partes = []
     mensaje = "========== PACKS DE CONTENIDO ==========\n"
 
@@ -275,8 +215,6 @@ async def contenido(ctx):
 
 @bot.command()
 async def kits(ctx):
-
-
     partes = []
     mensaje = "====== PACKS DE ACCESORIOS Y KITS ======\n"
 
@@ -300,8 +238,6 @@ async def kits(ctx):
 
 @bot.command()
 async def gratuitos(ctx):
-
-
     partes = []
     mensaje = "========== KIT GRATUITO ==========\n"
 
@@ -325,8 +261,6 @@ async def gratuitos(ctx):
 
 @bot.command()
 async def cronologia(ctx):
-
-
     def parse_fecha(codigo):
         fecha = fechas.get(codigo, "")
         if not fecha or fecha == "No disponible":
@@ -362,8 +296,6 @@ async def cronologia(ctx):
 
 @bot.command()
 async def ayuda(ctx):
-
-
     mensaje = (
         "========== COMANDOS DISPONIBLES ==========\n"
         "!dlc <búsqueda>  — Busca packs por nombre o código\n"
@@ -376,7 +308,6 @@ async def ayuda(ctx):
         "!cronologia      — Lista todos los packs por fecha de lanzamiento\n"
         "!ayuda           — Muestra esta lista de comandos\n"
     )
-
     await ctx.send(f"```{mensaje}```")
 
 # ==========================================
@@ -385,12 +316,11 @@ async def ayuda(ctx):
 
 @bot.command()
 async def infor(ctx, codigo: str):
-
-
     codigo = codigo.upper()
 
     if codigo not in packs:
         await ctx.send(f"No se encontró ningún pack con el código `{codigo}`.")
+        return
 
     nombre = packs[codigo]
 
@@ -427,9 +357,7 @@ async def infor(ctx, codigo: str):
 @bot.command()
 @commands.is_owner()
 async def servidores(ctx):
-
     mensaje = "========== SERVIDORES ==========\n\n"
-
     for servidor in bot.guilds:
         mensaje += f"{servidor.name}\n"
         mensaje += f"ID: {servidor.id}\n"
@@ -438,7 +366,9 @@ async def servidores(ctx):
     await ctx.send(f"```{mensaje}```")
 
 # ==========================================
-# INICIAR BOT
+# INICIAR BOT Y SERVIDOR WEB
 # ==========================================
 
-bot.run(TOKEN)
+if __name__ == "__main__":
+    keep_alive()  # Inicia Flask en segundo plano
+    bot.run(TOKEN) # Inicia el bot de Discord
