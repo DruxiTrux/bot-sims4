@@ -51,7 +51,7 @@ SERVIDORES_PERMITIDOS = {
 }
 
 # ==========================================
-# INTENTS Y CREACIÓN DEL BOT (SIN PRIVILEGIOS NECESARIOS)
+# INTENTS Y CREACIÓN DEL BOT
 # ==========================================
 
 intents = discord.Intents.default()
@@ -61,31 +61,22 @@ class MyBot(commands.Bot):
         super().__init__(command_prefix="!", intents=intents)
 
     async def setup_hook(self):
-        # Sincroniza los comandos slash globalmente o por servidor
         await self.tree.sync()
         print("¡Comandos Slash sincronizados correctamente!")
 
 bot = MyBot()
 
 # ==========================================
-# FILTRO GLOBAL: SOLO SERVIDOR PERMITIDO
+# DECORADOR DE VERIFICACIÓN PARA SERVIDORES
 # ==========================================
 
-@bot.tree.check
-async def solo_servidor_permitido(interaction: discord.Interaction):
-    if interaction.guild is None or interaction.guild.id not in SERVIDORES_PERMITIDOS:
-        raise app_commands.CheckFailure("Este bot no está permitido en este servidor.")
-    return True
-
-@bot.tree.error
-async def on_app_command_error(interaction: discord.Interaction, error: app_commands.AppCommandError):
-    if isinstance(error, app_commands.CheckFailure):
-        if interaction.response.is_done():
-            await interaction.followup.send("Este bot solo puede usarse en servidores autorizados.", ephemeral=True)
-        else:
+def solo_servidor_permitido():
+    async def predicate(interaction: discord.Interaction):
+        if interaction.guild is None or interaction.guild.id not in SERVIDORES_PERMITIDOS:
             await interaction.response.send_message("Este bot solo puede usarse en servidores autorizados.", ephemeral=True)
-    else:
-        print(f"Error inesperado: {error}")
+            return False
+        return True
+    return app_commands.check(predicate)
 
 # ==========================================
 # BOT LISTO
@@ -101,6 +92,7 @@ async def on_ready():
 
 @bot.tree.command(name="dlc", description="Busca packs por nombre o código")
 @app_commands.describe(busqueda="Nombre o código del pack que buscas")
+@solo_servidor_permitido()
 async def dlc(interaction: discord.Interaction, busqueda: str):
     busqueda = busqueda.lower()
     resultados = []
@@ -116,6 +108,7 @@ async def dlc(interaction: discord.Interaction, busqueda: str):
         await interaction.response.send_message("No se encontraron resultados.")
 
 @bot.tree.command(name="list", description="Muestra todos los packs por categoría")
+@solo_servidor_permitido()
 async def list_packs(interaction: discord.Interaction):
     partes = []
     mensaje = ""
@@ -171,6 +164,7 @@ async def list_packs(interaction: discord.Interaction):
         await interaction.followup.send(f"```{parte}```")
 
 @bot.tree.command(name="expansiones", description="Muestra solo los Packs de Expansión")
+@solo_servidor_permitido()
 async def expansiones(interaction: discord.Interaction):
     mensaje = "========== PACKS DE EXPANSIÓN ==========\n"
     for codigo, nombre in packs.items():
@@ -179,6 +173,7 @@ async def expansiones(interaction: discord.Interaction):
     await interaction.response.send_message(f"```{mensaje}```")
 
 @bot.tree.command(name="contenido", description="Muestra solo los Packs de Contenido")
+@solo_servidor_permitido()
 async def contenido(interaction: discord.Interaction):
     mensaje = "========== PACKS DE CONTENIDO ==========\n"
     for codigo, nombre in packs.items():
@@ -187,6 +182,7 @@ async def contenido(interaction: discord.Interaction):
     await interaction.response.send_message(f"```{mensaje}```")
 
 @bot.tree.command(name="kits", description="Muestra solo los Kits y Accesorios")
+@solo_servidor_permitido()
 async def kits(interaction: discord.Interaction):
     mensaje = "====== PACKS DE ACCESORIOS Y KITS ======\n"
     for codigo, nombre in packs.items():
@@ -195,6 +191,7 @@ async def kits(interaction: discord.Interaction):
     await interaction.response.send_message(f"```{mensaje}```")
 
 @bot.tree.command(name="gratuitos", description="Muestra solo los Kits Gratuitos")
+@solo_servidor_permitido()
 async def gratuitos(interaction: discord.Interaction):
     mensaje = "========== KIT GRATUITO ==========\n"
     for codigo, nombre in packs.items():
@@ -203,6 +200,7 @@ async def gratuitos(interaction: discord.Interaction):
     await interaction.response.send_message(f"```{mensaje}```")
 
 @bot.tree.command(name="cronologia", description="Lista todos los packs por fecha de lanzamiento")
+@solo_servidor_permitido()
 async def cronologia(interaction: discord.Interaction):
     def parse_fecha(codigo):
         fecha = fechas.get(codigo, "")
@@ -224,6 +222,7 @@ async def cronologia(interaction: discord.Interaction):
     await interaction.response.send_message(f"```{mensaje[:1900]}```")
 
 @bot.tree.command(name="ayuda", description="Muestra la lista de comandos disponibles")
+@solo_servidor_permitido()
 async def ayuda(interaction: discord.Interaction):
     mensaje = (
         "========== COMANDOS DISPONIBLES ==========\n"
@@ -241,6 +240,7 @@ async def ayuda(interaction: discord.Interaction):
 
 @bot.tree.command(name="infor", description="Muestra el detalle de un pack específico")
 @app_commands.describe(codigo="Código del pack (ej. EP01)")
+@solo_servidor_permitido()
 async def infor(interaction: discord.Interaction, codigo: str):
     codigo = codigo.upper()
 
@@ -274,5 +274,5 @@ async def infor(interaction: discord.Interaction, codigo: str):
 # ==========================================
 
 if __name__ == "__main__":
-    keep_alive()  # Inicia Flask una sola vez
+    keep_alive()
     bot.run(TOKEN)
