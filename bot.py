@@ -24,9 +24,6 @@ def keep_alive():
     t.daemon = True
     t.start()
 
-# Iniciar Flask inmediatamente antes de que cargue el bot
-keep_alive()
-
 # ==========================================
 # CARGAR BASE DE DATOS
 # ==========================================
@@ -53,15 +50,10 @@ SERVIDORES_PERMITIDOS = {
 }
 
 # ==========================================
-# INTENTS
+# INTENTS Y CREACIÓN DEL BOT
 # ==========================================
 
 intents = discord.Intents.default()
-intents.message_content = True
-
-# ==========================================
-# CREAR BOT
-# ==========================================
 
 bot = commands.Bot(
     command_prefix="!",
@@ -86,7 +78,7 @@ async def on_ready():
     print(f"Conectado como {bot.user}")
 
 # ==========================================
-# COMANDO: !dlc
+# COMANDOS (DLC, LIST, EXPANSIONES, ETC.)
 # ==========================================
 
 @bot.command()
@@ -106,10 +98,6 @@ async def dlc(ctx, *, busqueda):
         await ctx.send(f"```{mensaje}```")
     else:
         await ctx.send("No se encontraron resultados.")
-
-# ==========================================
-# COMANDO: !list
-# ==========================================
 
 @bot.command()
 async def list(ctx):
@@ -165,10 +153,6 @@ async def list(ctx):
     for parte in partes:
         await ctx.send(f"```{parte}```")
 
-# ==========================================
-# COMANDO: !expansiones
-# ==========================================
-
 @bot.command()
 async def expansiones(ctx):
     partes = []
@@ -187,10 +171,6 @@ async def expansiones(ctx):
 
     for parte in partes:
         await ctx.send(f"```{parte}```")
-
-# ==========================================
-# COMANDO: !contenido
-# ==========================================
 
 @bot.command()
 async def contenido(ctx):
@@ -211,10 +191,6 @@ async def contenido(ctx):
     for parte in partes:
         await ctx.send(f"```{parte}```")
 
-# ==========================================
-# COMANDO: !kits
-# ==========================================
-
 @bot.command()
 async def kits(ctx):
     partes = []
@@ -234,10 +210,6 @@ async def kits(ctx):
     for parte in partes:
         await ctx.send(f"```{parte}```")
 
-# ==========================================
-# COMANDO: !gratuitos
-# ==========================================
-
 @bot.command()
 async def gratuitos(ctx):
     partes = []
@@ -256,10 +228,6 @@ async def gratuitos(ctx):
 
     for parte in partes:
         await ctx.send(f"```{parte}```")
-
-# ==========================================
-# COMANDO: !cronologia
-# ==========================================
 
 @bot.command()
 async def cronologia(ctx):
@@ -292,10 +260,6 @@ async def cronologia(ctx):
     for parte in partes:
         await ctx.send(f"```{parte}```")
 
-# ==========================================
-# COMANDO: !ayuda
-# ==========================================
-
 @bot.command()
 async def ayuda(ctx):
     mensaje = (
@@ -311,10 +275,6 @@ async def ayuda(ctx):
         "!ayuda           — Muestra esta lista de comandos\n"
     )
     await ctx.send(f"```{mensaje}```")
-
-# ==========================================
-# COMANDO: !infor
-# ==========================================
 
 @bot.command()
 async def infor(ctx, codigo: str):
@@ -352,10 +312,6 @@ async def infor(ctx, codigo: str):
 
     await ctx.send(f"```Código  : {codigo}\nNombre  : {nombre}\nTipo    : {tipo}\nLanzado : {fecha}\nPrecio  : {precio} (precio aproximado)```")
 
-# ==========================================
-# COMANDO: !servidores
-# ==========================================
-
 @bot.command()
 @commands.is_owner()
 async def servidores(ctx):
@@ -372,5 +328,5 @@ async def servidores(ctx):
 # ==========================================
 
 if __name__ == "__main__":
-    keep_alive()  # Inicia Flask en segundo plano
-    bot.run(TOKEN) # Inicia el bot de Discord
+    keep_alive()  # Inicia Flask una sola vez
+    bot.run(TOKEN)
