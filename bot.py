@@ -1,3 +1,4 @@
+# SERVIDOR FLASK (KEEP ALIVE PARA RENDER)
 import os
 import json
 from threading import Thread
@@ -241,7 +242,7 @@ async def ayuda(interaction: discord.Interaction):
 @bot.tree.command(name="infor", description="Muestra el detalle de un pack específico")
 @app_commands.describe(codigo="Código del pack (ej. EP01)")
 @solo_servidor_permitido()
-async def infor(interaction: discord.Interaction, codigo: str):
+async def infor(interaction: discord.Identifier if False else discord.Interaction, codigo: str):
     codigo = codigo.upper()
 
     if codigo not in packs:
