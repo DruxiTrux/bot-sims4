@@ -1,241 +1,466 @@
 {
-
-    "EP01": "¡A Trabajar!",
-
-    "EP02": "¿Quedamos?",
-
-    "EP03": "Urbanitas",
-
-    "EP04": "Perros y Gatos",
-
-    "EP05": "Las 4 Estaciones",
-
-    "EP06": "¡Rumbo a la Fama!",
-
-    "EP07": "Vida Isleña",
-
-    "EP08": "Días de Universidad",
-
-    "EP09": "Vida Ecológica",
-
-    "EP10": "Escapada a la Nieve",
-
-    "EP11": "Vida en el Pueblo",
-
-    "EP12": "Años High School",
-
-    "EP13": "Creciendo en Familia",
-
-    "EP14": "Rancho de Caballos",
-
-    "EP15": "Se Alquila",
-
-    "EP16": "¡Viva el Amor!",
-
-    "EP17": "Vida y Más Allá",
-
-    "EP18": "Ocio y Negocio",
-
-    "EP19": "Naturaleza Encantada",
-
-    "EP20": "¡A la Aventura!",
-
-    "EP21": "Dinastías y Linajes",
-
-
-
-    "FP01": "Felices Fiestas",
-
-
-
-    "GP01": "De Acampada",
-
-    "GP02": "Día de Spa",
-
-    "GP03": "Escapada Gourmet",
-
-    "GP04": "Vampiros",
-
-    "GP05": "Papás y Mamás",
-
-    "GP06": "Aventura en la Selva",
-
-    "GP07": "StrangerVille",
-
-    "GP08": "El Reino de la Magia",
-
-    "GP09": "Star Wars: Viaje a Batuu",
-
-    "GP10": "Interiorismo",
-
-    "GP11": "¡Sí, Quiero!",
-
-    "GP12": "Licántropos",
-
-
-
-    "SP01": "Fiesta Glamurosa",
-
-    "SP02": "Patio de Ensueño",
-
-    "SP03": "Cocina Divina",
-
-    "SP04": "Escalofriante",
-
-    "SP05": "Noche de Cine",
-
-    "SP06": "Jardín Romántico",
-
-    "SP07": "Cuarto de Niños",
-
-    "SP08": "Diversión en el Patio",
-
-    "SP09": "Glamour Vintage",
-
-    "SP10": "Noche de Bolos",
-
-    "SP11": "Fitness",
-
-    "SP12": "Infantes",
-
-    "SP13": "Día de Colada",
-
-    "SP14": "Mi Primera Mascota",
-
-    "SP15": "Moschino",
-
-    "SP16": "Minicasas",
-
-    "SP17": "Portentos del Punto",
-
-    "SP18": "Fenómenos Paranormales",
-
-    "SP20": "Moda Retro",
-
-    "SP21": "Cocina Campestre",
-
-    "SP22": "Zafarrancho de Limpieza",
-
-    "SP23": "Oasis en el Patio",
-
-    "SP24": "Fashion Street",
-
-    "SP25": "Loft Industrial",
-
-    "SP26": "Moda de Aeropuerto",
-
-    "SP28": "Moda Masculina Moderna",
-
-    "SP29": "Decoración Vegetal",
-
-    "SP30": "Colores de Carnaval",
-
-    "SP31": "Decoración Maximalista",
-
-    "SP32": "Noches Chic",
-
-    "SP33": "Minicampistas",
-
-    "SP34": "Moda Mini",
-
-    "SP35": "Oasis de Lujo",
-
-    "SP36": "Pastel Pop",
-
-    "SP37": "Desorden Decorativo",
-
-    "SP38": "Moda Íntima",
-
-    "SP39": "Objetos para el Baño",
-
-    "SP40": "Invernadero Idílico",
-
-    "SP41": "Tesoros del Sótano",
-
-    "SP42": "Vuelta al Grunge",
-
-    "SP43": "Rincón de Lectura",
-
-    "SP44": "¡Al Agua, Patos!",
-
-    "SP45": "Lujo Moderno",
-
-    "SP46": "Chef de Casa",
-
-    "SP47": "Castillo con Clase",
-
-    "SP48": "Gusto Gótico",
-
-    "SP49": "Creaciones Cristalinas",
-
-    "SP50": "Homenaje Urbano",
-
-    "SP51": "Decoración Festiva",
-
-    "SP52": "Retiro en la Riviera",
-
-    "SP53": "Bistró Acogedor",
-
-    "SP54": "Estudio de Arte",
-
-    "SP55": "Cuarto de Cuentos",
-
-    "SP56": "Fiesta de Pijamas",
-
-    "SP57": "Caprichos Kitsch",
-
-    "SP58": "Rincón Gamer",
-
-    "SP59": "Santuario Secreto",
-
-    "SP60": "Cuarto de Casanova",
-
-    "SP61": "Salón Sofisticado",
-
-    "SP62": "Elegancia Ejecutiva",
-
-    "SP63": "Baño Elegante",
-
-    "SP64": "Estilo Encantador",
-
-    "SP65": "Taller de Restauración",
-
-    "SP66": "Años Dorados",
-
-    "SP67": "Menaje de Cocina",
-
-    "SP68": "Casa de Bob Esponja",
-
-    "SP69": "Moda de Otoño",
-
-    "SP70": "Cuarto Infantil de Bob Esponja",
-
-    "SP71": "Recibidor Rural",
-
-    "SP72": "Maquillaje con Glamour",
-
-    "SP73": "Retiro Moderno",
-
-    "SP74": "De la Huerta a la Mesa",
-
-    "SP75": "Cuarto de las Maravillas",
-
-    "SP76": "Estilo de Cine Clásico",
-
-    "SP77": "Hora del Té",
-
-    "SP78": "Salón de Baile de Máscaras de LB",
-
-    "SP79": "Galas de Baile de Máscaras de LB",
-
-    "SP80": "Sala de Música",
-
-    "SP81": "Sueños Silvestres",
-
-    "SP82": "El Patio de mi Casa",
-
-    "SP83": "Mean Girls",
-
-    "SP84": "Clueless"
-
-} 
+    "EP01": {
+        "nombre": "¡A Trabajar!",
+        "nombre_en": "Get to Work"
+    },
+    "EP02": {
+        "nombre": "¿Quedamos?",
+        "nombre_en": "Get Together"
+    },
+    "EP03": {
+        "nombre": "Urbanitas",
+        "nombre_en": "City Living"
+    },
+    "EP04": {
+        "nombre": "Perros y Gatos",
+        "nombre_en": "Cats & Dogs"
+    },
+    "EP05": {
+        "nombre": "Las 4 Estaciones",
+        "nombre_en": "Seasons"
+    },
+    "EP06": {
+        "nombre": "¡Rumbo a la Fama!",
+        "nombre_en": "Get Famous"
+    },
+    "EP07": {
+        "nombre": "Vida Isleña",
+        "nombre_en": "Island Living"
+    },
+    "EP08": {
+        "nombre": "Días de Universidad",
+        "nombre_en": "Discover University"
+    },
+    "EP09": {
+        "nombre": "Vida Ecológica",
+        "nombre_en": "Eco Lifestyle"
+    },
+    "EP10": {
+        "nombre": "Escapada a la Nieve",
+        "nombre_en": "Snowy Escape"
+    },
+    "EP11": {
+        "nombre": "Vida en el Pueblo",
+        "nombre_en": "Cottage Living"
+    },
+    "EP12": {
+        "nombre": "Años High School",
+        "nombre_en": "High School Years"
+    },
+    "EP13": {
+        "nombre": "Creciendo en Familia",
+        "nombre_en": "Growing Together"
+    },
+    "EP14": {
+        "nombre": "Rancho de Caballos",
+        "nombre_en": "Horse Ranch"
+    },
+    "EP15": {
+        "nombre": "Se Alquila",
+        "nombre_en": "For Rent"
+    },
+    "EP16": {
+        "nombre": "¡Viva el Amor!",
+        "nombre_en": "Lovestruck"
+    },
+    "EP17": {
+        "nombre": "Vida y Más Allá",
+        "nombre_en": "Life & Death"
+    },
+    "EP18": {
+        "nombre": "Ocio y Negocio",
+        "nombre_en": "Businesses & Hobbies"
+    },
+    "EP19": {
+        "nombre": "Naturaleza Encantada",
+        "nombre_en": "Enchanted by Nature"
+    },
+    "EP20": {
+        "nombre": "¡A la Aventura!",
+        "nombre_en": "Adventure Awaits"
+    },
+    "EP21": {
+        "nombre": "Dinastías y Linajes",
+        "nombre_en": "Royalty & Legacy"
+    },
+    "FP01": {
+        "nombre": "Felices Fiestas",
+        "nombre_en": "Holiday Celebration Pack"
+    },
+    "GP01": {
+        "nombre": "De Acampada",
+        "nombre_en": "Outdoor Retreat"
+    },
+    "GP02": {
+        "nombre": "Día de Spa",
+        "nombre_en": "Spa Day"
+    },
+    "GP03": {
+        "nombre": "Escapada Gourmet",
+        "nombre_en": "Dine Out"
+    },
+    "GP04": {
+        "nombre": "Vampiros",
+        "nombre_en": "Vampires"
+    },
+    "GP05": {
+        "nombre": "Papás y Mamás",
+        "nombre_en": "Parenthood"
+    },
+    "GP06": {
+        "nombre": "Aventura en la Selva",
+        "nombre_en": "Jungle Adventure"
+    },
+    "GP07": {
+        "nombre": "StrangerVille",
+        "nombre_en": "StrangerVille"
+    },
+    "GP08": {
+        "nombre": "El Reino de la Magia",
+        "nombre_en": "Realm of Magic"
+    },
+    "GP09": {
+        "nombre": "Star Wars: Viaje a Batuu",
+        "nombre_en": "Star Wars: Journey to Batuu"
+    },
+    "GP10": {
+        "nombre": "Interiorismo",
+        "nombre_en": "Dream Home Decorator"
+    },
+    "GP11": {
+        "nombre": "¡Sí, Quiero!",
+        "nombre_en": "My Wedding Stories"
+    },
+    "GP12": {
+        "nombre": "Licántropos",
+        "nombre_en": "Werewolves"
+    },
+    "SP01": {
+        "nombre": "Fiesta Glamurosa",
+        "nombre_en": "Luxury Party Stuff"
+    },
+    "SP02": {
+        "nombre": "Patio de Ensueño",
+        "nombre_en": "Perfect Patio Stuff"
+    },
+    "SP03": {
+        "nombre": "Cocina Divina",
+        "nombre_en": "Cool Kitchen Stuff"
+    },
+    "SP04": {
+        "nombre": "Escalofriante",
+        "nombre_en": "Spooky Stuff"
+    },
+    "SP05": {
+        "nombre": "Noche de Cine",
+        "nombre_en": "Movie Hangout Stuff"
+    },
+    "SP06": {
+        "nombre": "Jardín Romántico",
+        "nombre_en": "Romantic Garden Stuff"
+    },
+    "SP07": {
+        "nombre": "Cuarto de Niños",
+        "nombre_en": "Kids Room Stuff"
+    },
+    "SP08": {
+        "nombre": "Diversión en el Patio",
+        "nombre_en": "Backyard Stuff"
+    },
+    "SP09": {
+        "nombre": "Glamour Vintage",
+        "nombre_en": "Vintage Glamour Stuff"
+    },
+    "SP10": {
+        "nombre": "Noche de Bolos",
+        "nombre_en": "Bowling Night Stuff"
+    },
+    "SP11": {
+        "nombre": "Fitness",
+        "nombre_en": "Fitness Stuff"
+    },
+    "SP12": {
+        "nombre": "Infantes",
+        "nombre_en": "Toddler Stuff"
+    },
+    "SP13": {
+        "nombre": "Día de Colada",
+        "nombre_en": "Laundry Day Stuff"
+    },
+    "SP14": {
+        "nombre": "Mi Primera Mascota",
+        "nombre_en": "My First Pet Stuff"
+    },
+    "SP15": {
+        "nombre": "Moschino",
+        "nombre_en": "Moschino Stuff"
+    },
+    "SP16": {
+        "nombre": "Minicasas",
+        "nombre_en": "Tiny Living Stuff"
+    },
+    "SP17": {
+        "nombre": "Portentos del Punto",
+        "nombre_en": "Nifty Knitting Stuff"
+    },
+    "SP18": {
+        "nombre": "Fenómenos Paranormales",
+        "nombre_en": "Paranormal Stuff"
+    },
+    "SP20": {
+        "nombre": "Moda Retro",
+        "nombre_en": "Throwback Fit Kit"
+    },
+    "SP21": {
+        "nombre": "Cocina Campestre",
+        "nombre_en": "Country Kitchen Kit"
+    },
+    "SP22": {
+        "nombre": "Zafarrancho de Limpieza",
+        "nombre_en": "Bust the Dust Kit"
+    },
+    "SP23": {
+        "nombre": "Oasis en el Patio",
+        "nombre_en": "Courtyard Oasis Kit"
+    },
+    "SP24": {
+        "nombre": "Fashion Street",
+        "nombre_en": "Fashion Street Kit"
+    },
+    "SP25": {
+        "nombre": "Loft Industrial",
+        "nombre_en": "Industrial Loft Kit"
+    },
+    "SP26": {
+        "nombre": "Moda de Aeropuerto",
+        "nombre_en": "Incheon Arrivals Kit"
+    },
+    "SP28": {
+        "nombre": "Moda Masculina Moderna",
+        "nombre_en": "Modern Menswear Kit"
+    },
+    "SP29": {
+        "nombre": "Decoración Vegetal",
+        "nombre_en": "Blooming Rooms Kit"
+    },
+    "SP30": {
+        "nombre": "Colores de Carnaval",
+        "nombre_en": "Carnaval Streetwear Kit"
+    },
+    "SP31": {
+        "nombre": "Decoración Maximalista",
+        "nombre_en": "Decor to the Max Kit"
+    },
+    "SP32": {
+        "nombre": "Noches Chic",
+        "nombre_en": "Moonlight Chic Kit"
+    },
+    "SP33": {
+        "nombre": "Minicampistas",
+        "nombre_en": "Little Campers Kit"
+    },
+    "SP34": {
+        "nombre": "Moda Mini",
+        "nombre_en": "First Fits Kit"
+    },
+    "SP35": {
+        "nombre": "Oasis de Lujo",
+        "nombre_en": "Desert Luxe Kit"
+    },
+    "SP36": {
+        "nombre": "Pastel Pop",
+        "nombre_en": "Pastel Pop Kit"
+    },
+    "SP37": {
+        "nombre": "Desorden Decorativo",
+        "nombre_en": "Everyday Clutter Kit"
+    },
+    "SP38": {
+        "nombre": "Moda Íntima",
+        "nombre_en": "Simtimates Collection Kit"
+    },
+    "SP39": {
+        "nombre": "Objetos para el Baño",
+        "nombre_en": "Bathroom Clutter Kit"
+    },
+    "SP40": {
+        "nombre": "Invernadero Idílico",
+        "nombre_en": "Greenhouse Haven Kit"
+    },
+    "SP41": {
+        "nombre": "Tesoros del Sótano",
+        "nombre_en": "Basement Treasures Kit"
+    },
+    "SP42": {
+        "nombre": "Vuelta al Grunge",
+        "nombre_en": "Grunge Revival Kit"
+    },
+    "SP43": {
+        "nombre": "Rincón de Lectura",
+        "nombre_en": "Book Nook Kit"
+    },
+    "SP44": {
+        "nombre": "¡Al Agua, Patos!",
+        "nombre_en": "Poolside Splash Kit"
+    },
+    "SP45": {
+        "nombre": "Lujo Moderno",
+        "nombre_en": "Modern Luxe Kit"
+    },
+    "SP46": {
+        "nombre": "Chef de Casa",
+        "nombre_en": "Home Chef Hustle Stuff"
+    },
+    "SP47": {
+        "nombre": "Castillo con Clase",
+        "nombre_en": "Castle Estate Kit"
+    },
+    "SP48": {
+        "nombre": "Gusto Gótico",
+        "nombre_en": "Goth Galore Kit"
+    },
+    "SP49": {
+        "nombre": "Creaciones Cristalinas",
+        "nombre_en": "Crystal Creations Stuff"
+    },
+    "SP50": {
+        "nombre": "Homenaje Urbano",
+        "nombre_en": "Urban Homage Kit"
+    },
+    "SP51": {
+        "nombre": "Decoración Festiva",
+        "nombre_en": "Party Essentials Kit"
+    },
+    "SP52": {
+        "nombre": "Retiro en la Riviera",
+        "nombre_en": "Riviera Retreat Kit"
+    },
+    "SP53": {
+        "nombre": "Bistró Acogedor",
+        "nombre_en": "Cozy Bistro Kit"
+    },
+    "SP54": {
+        "nombre": "Estudio de Arte",
+        "nombre_en": "Artist Studio Kit"
+    },
+    "SP55": {
+        "nombre": "Cuarto de Cuentos",
+        "nombre_en": "Storybook Nursery Kit"
+    },
+    "SP56": {
+        "nombre": "Fiesta de Pijamas",
+        "nombre_en": "Sweet Slumber Party Kit"
+    },
+    "SP57": {
+        "nombre": "Caprichos Kitsch",
+        "nombre_en": "Cozy Kitsch Kit"
+    },
+    "SP58": {
+        "nombre": "Rincón Gamer",
+        "nombre_en": "Comfy Gamer Kit"
+    },
+    "SP59": {
+        "nombre": "Santuario Secreto",
+        "nombre_en": "Secret Sanctuary Kit"
+    },
+    "SP60": {
+        "nombre": "Cuarto de Casanova",
+        "nombre_en": "Casanova Cave Kit"
+    },
+    "SP61": {
+        "nombre": "Salón Sofisticado",
+        "nombre_en": "Refined Living Room Kit"
+    },
+    "SP62": {
+        "nombre": "Elegancia Ejecutiva",
+        "nombre_en": "Business Chic Kit"
+    },
+    "SP63": {
+        "nombre": "Baño Elegante",
+        "nombre_en": "Sleek Bathroom Kit"
+    },
+    "SP64": {
+        "nombre": "Estilo Encantador",
+        "nombre_en": "Sweet Allure Kit"
+    },
+    "SP65": {
+        "nombre": "Taller de Restauración",
+        "nombre_en": "Restoration Workshop Kit"
+    },
+    "SP66": {
+        "nombre": "Años Dorados",
+        "nombre_en": "Golden Years Kit"
+    },
+    "SP67": {
+        "nombre": "Menaje de Cocina",
+        "nombre_en": "Kitchen Clutter Kit"
+    },
+    "SP68": {
+        "nombre": "Casa de Bob Esponja",
+        "nombre_en": "SpongeBob's House Kit"
+    },
+    "SP69": {
+        "nombre": "Moda de Otoño",
+        "nombre_en": "Autumn Apparel Kit"
+    },
+    "SP70": {
+        "nombre": "Cuarto Infantil de Bob Esponja",
+        "nombre_en": "SpongeBob Kid's Room Kit"
+    },
+    "SP71": {
+        "nombre": "Recibidor Rural",
+        "nombre_en": "Grange Mudroom Kit"
+    },
+    "SP72": {
+        "nombre": "Maquillaje con Glamour",
+        "nombre_en": "Essential Glam Kit"
+    },
+    "SP73": {
+        "nombre": "Retiro Moderno",
+        "nombre_en": "Modern Retreat Kit"
+    },
+    "SP74": {
+        "nombre": "De la Huerta a la Mesa",
+        "nombre_en": "Garden to Table Kit"
+    },
+    "SP75": {
+        "nombre": "Cuarto de las Maravillas",
+        "nombre_en": "Wonderland Playroom Kit"
+    },
+    "SP76": {
+        "nombre": "Estilo de Cine Clásico",
+        "nombre_en": "Silver Screen Style Kit"
+    },
+    "SP77": {
+        "nombre": "Hora del Té",
+        "nombre_en": "Tea Time Solarium Kit"
+    },
+    "SP78": {
+        "nombre": "Salón de Baile de Máscaras de LB",
+        "nombre_en": "Lady Bridgerton's Masquerade Ball Fashion Kit"
+    },
+    "SP79": {
+        "nombre": "Galas de Baile de Máscaras de LB",
+        "nombre_en": "Lady Bridgerton's Masquerade Ballroom Kit"
+    },
+    "SP80": {
+        "nombre": "Sala de Música",
+        "nombre_en": "Music Den Kit"
+    },
+    "SP81": {
+        "nombre": "Sueños Silvestres",
+        "nombre_en": "Prairie Dreams Kit"
+    },
+    "SP82": {
+        "nombre": "El Patio de mi Casa",
+        "nombre_en": "Yard Charm Kit"
+    },
+    "SP83": {
+        "nombre": "Mean Girls",
+        "nombre_en": "Mean Girls Kit"
+    },
+    "SP84": {
+        "nombre": "Clueless",
+        "nombre_en": "Clueless Kit"
+    }
+}
