@@ -95,200 +95,160 @@ async def on_ready():
 @app_commands.describe(busqueda="Nombre o código del pack que buscas")
 @solo_servidor_permitido()
 async def dlc(interaction: discord.Interaction, busqueda: str):
-    busqueda = busqueda.lower()
-    resultados = []
+    await interaction.response.defer(ephemeral=False)
+    try:
+        busqueda = busqueda.lower()
+        resultados = []
 
-    for codigo, info in packs.items():
-        nombre_es = info.get("nombre", "")
-        nombre_en = info.get("nombre_en", "")
-        
-        # Permite buscar por código, nombre en español o nombre en inglés
-        if (busqueda in codigo.lower() or 
-            busqueda in nombre_es.lower() or 
-            busqueda in nombre_en.lower()):
-            resultados.append(f"{codigo} - {nombre_es} ({nombre_en})")
+        for codigo, info in packs.items():
+            nombre_es = info.get("nombre", "")
+            nombre_en = info.get("nombre_en", "")
+            
+            if (busqueda in codigo.lower() or 
+                busqueda in nombre_es.lower() or 
+                busqueda in nombre_en.lower()):
+                resultados.append(f"{codigo} - {nombre_es} ({nombre_en})")
 
-    if resultados:
-        mensaje = "\n".join(resultados)
-        await interaction.response.send_message(f"```{mensaje[:1900]}```")
-    else:
-        await interaction.response.send_message("No se encontraron resultados.")
+        if resultados:
+            mensaje = "\n".join(resultados)
+            await interaction.followup.send(f"```{mensaje[:1900]}```")
+        else:
+            await interaction.followup.send("No se encontraron resultados.")
+    except Exception as e:
+        await interaction.followup.send(f"Ocurrió un error al buscar: {e}")
 
 @bot.tree.command(name="list", description="Muestra todos los packs por categoría")
 @solo_servidor_permitido()
 async def list_packs(interaction: discord.Interaction):
-    partes = []
-    mensaje = ""
+    await interaction.response.defer(ephemeral=False)
+    try:
+        partes = []
+        mensaje = ""
 
-    # FREE PACKS
-    mensaje += "========== KIT GRATUITO ==========\n"
-    for codigo, info in packs.items():
-        if codigo.startswith("FP"):
-            linea = f"{codigo} - {info['nombre']} ({info['nombre_en']})\n"
-            if len(mensaje) + len(linea) > 1900:
-                partes.append(mensaje)
-                mensaje = ""
-            mensaje += linea
-    mensaje += "\n"
+        # FREE PACKS / KITS GRATUITOS
+        mensaje += "========== KIT GRATUITO ==========\n"
+        for codigo, info in packs.items():
+            if codigo.startswith("FP"):
+                linea = f"{codigo} - {info['nombre']} ({info['nombre_en']})\n"
+                if len(mensaje) + len(linea) > 1900:
+                    partes.append(mensaje)
+                    mensaje = ""
+                mensaje += linea
+        mensaje += "\n"
 
-    # EXPANSIONES
-    mensaje += "========== PACKS DE EXPANSIÓN ==========\n"
-    for codigo, info in packs.items():
-        if codigo.startswith("EP"):
-            linea = f"{codigo} - {info['nombre']} ({info['nombre_en']})\n"
-            if len(mensaje) + len(linea) > 1900:
-                partes.append(mensaje)
-                mensaje = ""
-            mensaje += linea
-    mensaje += "\n"
+        # EXPANSIONES
+        mensaje += "========== PACKS DE EXPANSIÓN ==========\n"
+        for codigo, info in packs.items():
+            if codigo.startswith("EP"):
+                linea = f"{codigo} - {info['nombre']} ({info['nombre_en']})\n"
+                if len(mensaje) + len(linea) > 1900:
+                    partes.append(mensaje)
+                    mensaje = ""
+                mensaje += linea
+        mensaje += "\n"
 
-    # CONTENIDO
-    mensaje += "========== PACKS DE CONTENIDO ==========\n"
-    for codigo, info in packs.items():
-        if codigo.startswith("GP"):
-            linea = f"{codigo} - {info['nombre']} ({info['nombre_en']})\n"
-            if len(mensaje) + len(linea) > 1900:
-                partes.append(mensaje)
-                mensaje = ""
-            mensaje += linea
-    mensaje += "\n"
+        # CONTENIDO
+        mensaje += "========== PACKS DE CONTENIDO ==========\n"
+        for codigo, info in packs.items():
+            if codigo.startswith("GP"):
+                linea = f"{codigo} - {info['nombre']} ({info['nombre_en']})\n"
+                if len(mensaje) + len(linea) > 1900:
+                    partes.append(mensaje)
+                    mensaje = ""
+                mensaje += linea
+        mensaje += "\n"
 
-    # KITS Y ACCESORIOS
-    mensaje += "====== PACKS DE ACCESORIOS Y KITS ======\n"
-    for codigo, info in packs.items():
-        if codigo.startswith("SP"):
-            linea = f"{codigo} - {info['nombre']} ({info['nombre_en']})\n"
-            if len(mensaje) + len(linea) > 1900:
-                partes.append(mensaje)
-                mensaje = ""
-            mensaje += linea
+        # KITS Y ACCESORIOS
+        mensaje += "====== PACKS DE ACCESORIOS Y KITS ======\n"
+        for codigo, info in packs.items():
+            if codigo.startswith("SP"):
+                linea = f"{codigo} - {info['nombre']} ({info['nombre_en']})\n"
+                if len(mensaje) + len(linea) > 1900:
+                    partes.append(mensaje)
+                    mensaje = ""
+                mensaje += linea
 
-    if mensaje:
-        partes.append(mensaje)
+        if mensaje:
+            partes.append(mensaje)
 
-    await interaction.response.send_message(f"```{partes[0]}```")
-    for parte in partes[1:]:
-        await interaction.followup.send(f"```{parte}```")
+        await interaction.followup.send(f"```{partes[0]}```")
+        for parte in partes[1:]:
+            await interaction.followup.send(f"```{parte}```")
+    except Exception as e:
+        await interaction.followup.send(f"Ocurrió un error: {e}")
 
 @bot.tree.command(name="expansiones", description="Muestra solo los Packs de Expansión")
 @solo_servidor_permitido()
 async def expansiones(interaction: discord.Interaction):
-    mensaje = "========== PACKS DE EXPANSIÓN ==========\n"
-    for codigo, info in packs.items():
-        if codigo.startswith("EP"):
-            mensaje += f"{codigo} - {info['nombre']} ({info['nombre_en']})\n"
-    await interaction.response.send_message(f"```{mensaje[:1900]}```")
+    await interaction.response.defer(ephemeral=False)
+    try:
+        mensaje = "========== PACKS DE EXPANSIÓN ==========\n"
+        for codigo, info in packs.items():
+            if codigo.startswith("EP"):
+                mensaje += f"{codigo} - {info['nombre']} ({info['nombre_en']})\n"
+        await interaction.followup.send(f"```{mensaje[:1900]}```")
+    except Exception as e:
+        await interaction.followup.send(f"Ocurrió un error: {e}")
 
 @bot.tree.command(name="contenido", description="Muestra solo los Packs de Contenido")
 @solo_servidor_permitido()
 async def contenido(interaction: discord.Interaction):
-    mensaje = "========== PACKS DE CONTENIDO ==========\n"
-    for codigo, info in packs.items():
-        if codigo.startswith("GP"):
-            mensaje += f"{codigo} - {info['nombre']} ({info['nombre_en']})\n"
-    await interaction.response.send_message(f"```{mensaje[:1900]}```")
+    await interaction.response.defer(ephemeral=False)
+    try:
+        mensaje = "========== PACKS DE CONTENIDO ==========\n"
+        for codigo, info in packs.items():
+            if codigo.startswith("GP"):
+                mensaje += f"{codigo} - {info['nombre']} ({info['nombre_en']})\n"
+        await interaction.followup.send(f"```{mensaje[:1900]}```")
+    except Exception as e:
+        await interaction.followup.send(f"Ocurrió un error: {e}")
 
 @bot.tree.command(name="kits", description="Muestra solo los Kits y Accesorios")
 @solo_servidor_permitido()
 async def kits(interaction: discord.Interaction):
-    mensaje = "====== PACKS DE ACCESORIOS Y KITS ======\n"
-    for codigo, info in packs.items():
-        if codigo.startswith("SP"):
-            mensaje += f"{codigo} - {info['nombre']} ({info['nombre_en']})\n"
-    await interaction.response.send_message(f"```{mensaje[:1900]}```")
+    await interaction.response.defer(ephemeral=False)
+    try:
+        mensaje = "====== PACKS DE ACCESORIOS Y KITS ======\n"
+        for codigo, info in packs.items():
+            if codigo.startswith("SP"):
+                mensaje += f"{codigo} - {info['nombre']} ({info['nombre_en']})\n"
+        await interaction.followup.send(f"```{mensaje[:1900]}```")
+    except Exception as e:
+        await interaction.followup.send(f"Ocurrió un error: {e}")
 
 @bot.tree.command(name="gratuitos", description="Muestra solo los Kits Gratuitos")
 @solo_servidor_permitido()
 async def gratuitos(interaction: discord.Interaction):
-    mensaje = "========== KIT GRATUITO ==========\n"
-    for codigo, info in packs.items():
-        if codigo.startswith("FP"):
-            mensaje += f"{codigo} - {info['nombre']} ({info['nombre_en']})\n"
-    await interaction.response.send_message(f"```{mensaje[:1900]}```")
+    await interaction.response.defer(ephemeral=False)
+    try:
+        mensaje = "========== KIT GRATUITO ==========\n"
+        for codigo, info in packs.items():
+            if codigo.startswith("FP"):
+                mensaje += f"{codigo} - {info['nombre']} ({info['nombre_en']})\n"
+        await interaction.followup.send(f"```{mensaje[:1900]}```")
+    except Exception as e:
+        await interaction.followup.send(f"Ocurrió un error: {e}")
 
 @bot.tree.command(name="cronologia", description="Lista todos los packs por fecha de lanzamiento")
 @solo_servidor_permitido()
 async def cronologia(interaction: discord.Interaction):
-    def parse_fecha(codigo):
-        fecha = fechas.get(codigo, "")
-        if not fecha or fecha == "No disponible":
-            return (9999, 99, 99)
-        try:
-            d, m, a = fecha.split("/")
-            return (int(a), int(m), int(d))
-        except:
-            return (9999, 99, 99)
+    await interaction.response.defer(ephemeral=False)
+    try:
+        def parse_fecha(codigo):
+            fecha = fechas.get(codigo, "")
+            if not fecha or fecha == "No disponible":
+                return (9999, 99, 99)
+            try:
+                d, m, a = fecha.split("/")
+                return (int(a), int(m), int(d))
+            except:
+                return (9999, 99, 99)
 
-    packs_ordenados = sorted(packs.items(), key=lambda x: parse_fecha(x[0]))
-    mensaje = "====== PACKS POR FECHA DE LANZAMIENTO ======\n"
+        packs_ordenados = sorted(packs.items(), key=lambda x: parse_fecha(x[0]))
+        mensaje = "====== PACKS POR FECHA DE LANZAMIENTO ======\n"
 
-    for codigo, info in packs_ordenados:
-        fecha = fechas.get(codigo, "No disponible")
-        mensaje += f"{fecha}  {codigo} - {info['nombre']} ({info['nombre_en']})\n"
+        for codigo, info in packs_ordenados:
+            fecha = fechas.get(codigo, "No disponible")
+            mensaje += f"{fecha}  {codigo} - {info['nombre']} ({info['nombre_en']})\n"
 
-    await interaction.response.send_message(f"```{mensaje[:1900]}```")
-
-@bot.tree.command(name="ayuda", description="Muestra la lista de comandos disponibles")
-@solo_servidor_permitido()
-async def ayuda(interaction: discord.Interaction):
-    mensaje = (
-        "========== COMANDOS DISPONIBLES ==========\n"
-        "/dlc <búsqueda>  — Busca packs por nombre o código\n"
-        "/list            — Muestra todos los packs por categoría\n"
-        "/expansiones     — Muestra solo los Packs de Expansión\n"
-        "/contenido       — Muestra solo los Packs de Contenido\n"
-        "/kits            — Muestra solo los Kits y Accesorios\n"
-        "/gratuitos       — Muestra solo los Kits Gratuitos\n"
-        "/infor <código>  — Muestra el detalle de un pack específico\n"
-        "/cronologia      — Lista todos los packs por fecha de lanzamiento\n"
-        "/ayuda           — Muestra esta lista de comandos\n"
-    )
-    await interaction.response.send_message(f"```{mensaje}```")
-
-@bot.tree.command(name="infor", description="Muestra el detalle de un pack específico")
-@app_commands.describe(codigo="Código del pack (ej. EP01)")
-@solo_servidor_permitido()
-async def infor(interaction: discord.Interaction, codigo: str):
-    codigo = codigo.upper()
-
-    if codigo not in packs:
-        await interaction.response.send_message(f"No se encontró ningún pack con el código `{codigo}`.")
-        return
-
-    info = packs[codigo]
-    nombre = info["nombre"]
-    nombre_en = info["nombre_en"]
-
-    if codigo.startswith("EP"):
-        tipo = "Pack de Expansión"
-        precio = "~$39.99 USD"
-    elif codigo.startswith("GP"):
-        tipo = "Pack de Contenido"
-        precio = "~$19.99 USD"
-    elif codigo.startswith("SP"):
-        tipo = "Pack de Accesorios / Kit"
-        precio = "~$9.99 USD" if int(codigo[2:]) <= 18 else "~$4.99 USD"
-    elif codigo.startswith("FP"):
-        tipo = "Free Pack"
-        precio = "Gratis"
-    else:
-        tipo = "Desconocido"
-        precio = "~$4.99 USD"
-
-    fecha = fechas.get(codigo, "No disponible")
-    await interaction.response.send_message(
-        f"```Código     : {codigo}\n"
-        f"Nombre (ES): {nombre}\n"
-        f"Nombre (EN): {nombre_en}\n"
-        f"Tipo       : {tipo}\n"
-        f"Lanzado    : {fecha}\n"
-        f"Precio     : {precio} (precio aproximado)```"
-    )
-
-# ==========================================
-# INICIAR BOT Y SERVIDOR WEB
-# ==========================================
-
-if __name__ == "__main__":
-    keep_alive()
-    bot.run(TOKEN)
+        await interaction.followup
